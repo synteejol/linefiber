@@ -1,0 +1,66 @@
+version: "3.3"
+services:
+  linefiber_mysql:
+    image: mysql:8.0.19
+    container_name: lf-mysql-cont
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+
+      MYSQL_DATABASE: linefiberdb
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - lfnet
+
+  phpmyadmin-lf:
+    image: phpmyadmin/phpmyadmin:5.0.1
+    #restart: always
+    container_name: pma-lf
+    environment:
+      PMA_HOST: linefiber_mysql
+#       PMA_USER: utente
+#       PMA_PASSWORD: secret
+#       PMA_ROOT_PASSWORD: rootpass
+      UPLOAD_LIMIT: 3000000000
+    ports:
+      - "8080:80"
+    networks:
+      - lfnet
+
+  apache-lf-server:
+    build:
+      context: .
+    container_name: apache-lf-cont
+    environment:
+      LF_DB_ROOT_PASSWORD: rootpass
+      LF_DATABASE: linefiberdb
+#      ALEPH_DB_PASSWORD: yellow8228
+#      ALEPH_DB_USER: nosuser
+      DB_PORT: 3306
+      DB_HOST: linefiber_mysql
+#      SSL_PROXY: "false"
+#      PORTA: 80
+#       MOODLE_URL: http://localhost
+#      REV_PROXY: 0
+
+    depends_on:
+      - linefiber_mysql
+    ports:
+      - "80:80"
+    #    volumes:
+    #      - ./docker-bookServer/bookServer/test.php:/app
+    networks:
+      - lfnet
+
+volumes:
+  mysql-data:
+
+
+
+networks:
+  lfnet:
+
+
