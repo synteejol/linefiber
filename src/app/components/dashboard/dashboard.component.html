@@ -1,0 +1,42 @@
+
+<div class="container">
+
+  <div *ngIf="error" class="alert alert-danger">Error</div>
+  <div class="row">
+
+    <div class="col-lg-6 col-md-12 mx-0">
+
+      <div class="search-book">
+        <input type="text"
+               class="form-control"
+               name="search" [(ngModel)]="term"
+               autocomplete="off"
+               placeholder="&#61442; Cerca ">
+      </div>
+      <ul class="list-group">
+        <li
+
+          *ngFor=" let rinnovo of rinn"
+          class="list-group-item"
+          [ngClass]="{'active': rinnovo.id === active?.id }"
+          (click)="setActive(rinnovo)">
+<!--          <img [src]="rinnovo.immagine  ? rinnovo.immagine : '../../../assets/img/add.png'" class="img-thumbnail mr-2" alt="" width="40">-->
+          {{rinnovo.piano}} - {{rinnovo.punto_affiliato}}
+          <div class="pull-right">
+            <!--            <span [style.color]="rinnovo.price > 15 ? 'red' : null"> € {{book.price | number: '1.2-2'}}</span>-->
+            <!--            <i class="fa fa-info-circle ml-2" aria-hidden="true" [routerLink]="['/book', rinnovo.id]"></i>-->
+            <i class="fa fa-trash ml-2" ></i>
+          </div>
+        </li>
+      </ul>
+      <!--      <pagination-controls (pageChange)="p = $event"></pagination-controls>-->
+    </div>
+    <div class="col-lg-6 col-md12 mx-0">
+      <app-form
+        [active]="active"
+        [rinn]="rinn"
+      ></app-form>
+    </div>
+
+  </div>
+</div>

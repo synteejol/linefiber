@@ -1,0 +1,62 @@
+<form [formGroup]="rinnform" (submit)="save(rinnform)">
+
+
+
+  <div class="form-group" [formGroup]="rinnform" >
+
+    <input formControlName="utente" type="json" class="form-control" name="utente"  required>
+
+  </div>
+<!--  <div class="form-group">-->
+
+<!--    <input [ngModel]="active?.mensilita" type="text" class="form-control" name="mensilita" placeholder="mensilità" required>-->
+
+<!--  </div>-->
+<!--  <div class="form-group" >-->
+<!--    <select #select (change)="onChange()" name="punto_aff">-->
+
+<!--      <option *ngFor=" let punto of punti_aff" [ngValue]="punto.nome_punto" >{{punto.nome_punto}}</option>-->
+
+<!--    </select>-->
+<!--  </div>-->
+
+<!--  <form [formGroup]="rinnform">-->
+    <select formControlName="aff">
+      <option value="" disabled selected>Punti affiliati</option>
+      <option *ngFor="let country of punti_aff" [value]="country.nome_punto">
+        {{ country.nome_punto }}
+      </option>
+    </select>
+<!--  </form>-->
+<!--  <p>Form value: </p>-->
+<!--  <pre>{{ rinnform.value | json }}</pre>-->
+  <select formControlName="piano">
+    <option value="" disabled selected>Piani tariffari</option>
+    <option *ngFor="let p of piani" [value]="p.nome_piano">
+      {{ p.nome_piano }}
+    </option>
+  </select>
+
+  <select formControlName="tecnico">
+    <option value="" disabled selected>Tecnici</option>
+    <option *ngFor="let tec of tecnici" [value]="tec.nome_tec">
+      {{ tec.nome_tec }}
+    </option>
+  </select>
+<!--  <div class="form-group">-->
+<!--    <input style="display: none" type="file" class="form-control" name="img" (change)="readUrl($event)" #selectedFile>-->
+<!--  </div>-->
+<!--  <div class="mb-3">-->
+<!--    <img *ngIf="active" [src]="active?.immagine"  height="130" >-->
+<!--    <img *ngIf="this.imageSrc" [src]="this.imageSrc"  height="130" >-->
+<!--    <button type="button" class="btn btn-outline-warning btn-small ml-1" (click)="selectedFile.click()">-->
+<!--      SELECT IMAGE-->
+<!--    </button>-->
+
+<!--    <img *ngIf="this.imageSrc"  [ngModel]="this.imageSrc" type="hidden" name="immagine" >-->
+<!--    <img *ngIf="active" [ngModel]="active.immagine"  type="hidden" name="immagine" >-->
+<!--  </div>-->
+  <button type="submit" class="btn btn-outline-warning btn-sm mr-1" [disabled]="rinnform.invalid">{{active ? 'EDIT': 'ADD'}}</button>
+<!--  <button type="button" class="btn btn-outline-success btn-sm mr-1" (click)="reset(f)">RESET</button>-->
+</form>
+
