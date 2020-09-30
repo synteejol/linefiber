@@ -123,8 +123,13 @@
               "devServerTarget": "linefiber:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "linefiber"
 }
