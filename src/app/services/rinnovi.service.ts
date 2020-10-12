@@ -3,10 +3,10 @@ import {Piani, Punti, Rinnovi, Tecnici} from "../model/rinnovi";
 import {Observable} from "rxjs";
 import {HttpClient} from '@angular/common/http';
 import {FormGroup, NgForm} from "@angular/forms";
-const ApiUrl = 'http://localhost/db_conn.php';
-const PuntiApiUrl = 'http://localhost/video.php';
-const TecniciApiUrl = 'http://localhost/tecnici.php';
-const PianiApiUrl = 'http://localhost/piani.php';
+const ApiUrl = 'https://lit-crag-25077.herokuapp.com/db_conn.php';
+const PuntiApiUrl = 'https://lit-crag-25077.herokuapp.com/video.php';
+const TecniciApiUrl = 'https://lit-crag-25077.herokuapp.com/tecnici.php';
+const PianiApiUrl = 'https://lit-crag-25077.herokuapp.com/piani.php';
 @Injectable({
   providedIn: 'root'
 })

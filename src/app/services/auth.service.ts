@@ -12,7 +12,7 @@ export class AuthService {
   private option: HttpHeaders = new HttpHeaders().set('Content-type', 'application/x-www-form-urlencoded');
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost/auth/index.php';
+    this.url = 'https://lit-crag-25077.herokuapp.com/auth/index.php';
   }
 
   login(datiform): Observable<string> {
