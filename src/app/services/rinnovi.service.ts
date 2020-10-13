@@ -31,10 +31,10 @@ export class RinnoviService {
   // getVideoById(id): Observable<Video[]>{
   //   return this.http.get<Video[]>(`${ApiVideoUrl}${id}`);
   // }
-  // // METODO DELETE CANCELLAZIONE DATI
-  // deleteSezione(sezione: Rinnovi): Observable<Rinnovi>{
-  //   return this.http.delete<Rinnovi>(`${ApiUrl}?id=${sezione.id}`);
-  // }
+  // METODO DELETE CANCELLAZIONE DATI
+  deleteSezione(rinnovi: Rinnovi): Observable<Rinnovi>{
+    return this.http.delete<Rinnovi>(`${ApiUrl}?id=${rinnovi.id}`);
+  }
 
   // METODO RICEZIONE PUNTI AFFILIATI
   getAllPunti(): Observable <Punti[]> {

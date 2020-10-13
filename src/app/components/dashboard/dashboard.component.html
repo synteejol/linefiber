@@ -11,12 +11,12 @@
                class="form-control"
                name="search" [(ngModel)]="term"
                autocomplete="off"
-               placeholder="&#61442; Cerca ">
+               placeholder="Cerca ">
       </div>
       <ul class="list-group">
         <li
 
-          *ngFor=" let rinnovo of rinn"
+          *ngFor=" let rinnovo of rinn | slice:0:5; let i = index;"
           class="list-group-item"
           [ngClass]="{'active': rinnovo.id === active?.id }"
           (click)="setActive(rinnovo)">
@@ -25,7 +25,7 @@
           <div class="pull-right">
             <!--            <span [style.color]="rinnovo.price > 15 ? 'red' : null"> € {{book.price | number: '1.2-2'}}</span>-->
             <!--            <i class="fa fa-info-circle ml-2" aria-hidden="true" [routerLink]="['/book', rinnovo.id]"></i>-->
-            <i class="fa fa-trash ml-2" ></i>
+            <i class="fa fa-trash ml-2" (click)="delete($event, rinnovo)"></i>
           </div>
         </li>
       </ul>

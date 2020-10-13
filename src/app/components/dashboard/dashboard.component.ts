@@ -25,19 +25,21 @@ export class DashboardComponent implements OnInit {
         (error) => this.error = error
       );
   }
-  // delete(event, sezione: Rinnovi){
-  //   event.stopPropagation();
-  //   console.log(sezione);
-  //   this.rinnovi.deleteSezione(sezione)
-  //     .subscribe(() => {
-  //         const index = this.sez.findIndex(b => b.id === sezione.id);
-  //         this.sez.splice(index, 1);
-  //         console.log('delete');
-  //       },
-  //       (error) => this.error = error
-  //     );
-  //
-  // }
+  delete(event, rinn: Rinnovi){
+    event.stopPropagation();
+    console.log(rinn);
+    this.rinnovi.deleteSezione(rinn)
+      .subscribe(() => {
+          const index = this.rinn.findIndex(b => b.id === rinn.id);
+          this.rinn.splice(index, 1);
+         // console.log('delete');
+        },
+        //(error) => this.error = error
+        
+      );
+      
+  
+  }
 
   setActive(rinnovo: Rinnovi){
     this.active = rinnovo;
