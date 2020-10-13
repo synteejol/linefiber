@@ -22,9 +22,9 @@ export class RinnoviService {
     return this.http.post<Rinnovi>(`${ApiUrl}`, form.value, { responseType: 'json' });
   }
   // // METODO PATCH MODIFICA DATI
-  // editSezione(form: NgForm, active: Rinnovi): Observable<Rinnovi>{
-  //   return this.http.patch<Rinnovi>(`${ApiUrl}?id=${active.id}`, form.value);
-  // }
+  editRinnovo(form: FormGroup, active: Rinnovi): Observable<Rinnovi>{
+    return this.http.patch<Rinnovi>(`${ApiUrl}?id=${active.id}`, form.value, { responseType: 'json' });
+  }
   // detailSection(id): Observable <Rinnovi>{
   //   return  this.http.get<Rinnovi>(`${ApiVideoUrl}${id}`);
   // }

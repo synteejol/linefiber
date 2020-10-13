@@ -19,12 +19,12 @@ export class FormComponent implements OnInit {
   error: any;
   // utente: any;
   save(form: FormGroup){
-    // if (this.active){
-    //   this.edit(form);
-    // } else {
-    //   this.add(form);
-    // }
-    this.add(form);
+    if (this.active){
+      this.edit(form);
+    } else {
+      this.add(form);
+    }
+    //this.add(form);
   }
   add(form: FormGroup){
     this.rinnoviService.addRinnovo(form)
@@ -38,15 +38,15 @@ export class FormComponent implements OnInit {
 
       });
   }
-  // edit(form: NgForm){
-  //   this.rinnoviService.editrinnione(form, this.active)
-  //     .subscribe(res => {
-  //       const index = this.rinn.findIndex(b => b.id === this.active.id);
-  //       this.rinn[index] = res;
-  //       location.reload();
-  //
-  //     });
-  // }
+  edit(form: FormGroup){
+    this.rinnoviService.editRinnovo(form, this.active)
+      .subscribe(res => {
+        const index = this.rinn.findIndex(b => b.id === this.active.id);
+        this.rinn[index] = res;
+        location.reload();
+        console.log(index);
+      });
+  }
 
   reset(form: NgForm){
     this.active = null;

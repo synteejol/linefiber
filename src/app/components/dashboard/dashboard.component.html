@@ -16,7 +16,7 @@
       <ul class="list-group">
         <li
 
-          *ngFor=" let rinnovo of rinn | slice:0:5; let i = index;"
+          *ngFor=" let rinnovo of rinn | slice:0:10; let i = index;"
           class="list-group-item"
           [ngClass]="{'active': rinnovo.id === active?.id }"
           (click)="setActive(rinnovo)">
